@@ -99,8 +99,7 @@ services:
       - /path/to/data:/data
     ports:
       - 443:443
-    restart: unless-stopped
-    
+    restart: unless-stopped 
 ```
 
 ## Mariadb
@@ -123,6 +122,28 @@ services:
       - path_to_data:/config
     ports:
       - 3306:3306
+    restart: unless-stopped   
+```
+
+## Qbittorrent
+```
+version: "2.1"
+services:
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+      - WEBUI_PORT=8080
+    volumes:
+      - /path/to/appdata/config:/config
+      - /path/to/downloads:/downloads
+    ports:
+      - 8080:8080
+      - 6881:6881
+      - 6881:6881/udp
     restart: unless-stopped
 ```
 
