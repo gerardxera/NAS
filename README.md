@@ -52,7 +52,6 @@ services:
         ipv4_address: 192.168.1.2 
 ```
 
-
 ## Pihole
 ```
 version: "3"
@@ -83,6 +82,48 @@ services:
         ipv4_address: 192.168.1.3 
 ```
 
+## Generamos una red de contenedores 
+```
+version: "2.1"
+services:
+  nextcloud:
+    image: lscr.io/linuxserver/nextcloud:latest
+    container_name: nextcloud
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Madrid
+    volumes:
+      - /path/to/appdata:/config
+      - /path/to/data:/data
+    ports:
+      - 443:443
+    restart: unless-stopped
+    
+```
+
+## Mariadb
+```
+version: "2.1"
+services:
+  mariadb:
+    image: lscr.io/linuxserver/mariadb:latest
+    container_name: mariadb
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - MYSQL_ROOT_PASSWORD=ROOT_ACCESS_PASSWORD
+      - TZ=Europe/London
+      - MYSQL_DATABASE=USER_DB_NAME #optional
+      - MYSQL_USER=MYSQL_USER #optional
+      - MYSQL_PASSWORD=DATABASE_PASSWORD #optional
+      - REMOTE_SQL=http://URL1/your.sql,https://URL2/your.sql #optional
+    volumes:
+      - path_to_data:/config
+    ports:
+      - 3306:3306
+    restart: unless-stopped
+```
 
 ## Generamos una red de contenedores 
 ```
