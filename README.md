@@ -3,6 +3,7 @@
 
 Todos los contenedores que aquí encontrais, tienen su autor y por tanto sus derechos de autor.
 La mayoria tienen su documentación en el github del creador.
+
 ...................................
 
 Para la instalación de Open Media Vault en la Raspberry, primero tenemos que instalar Raspberry pi OS lite.
