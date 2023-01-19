@@ -83,7 +83,7 @@ services:
         ipv4_address: 192.168.1.3 
 ```
 
-## Generamos una red de contenedores 
+## NextCloud
 ```
 version: "2.1"
 services:
