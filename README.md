@@ -1,8 +1,8 @@
 # Instalación de Open Media Vault en Nuestra Raspberry Pi
 
+
 Todos los contenedores que aquí encontrais, tienen su autor y por tanto sus derechos de autor.
 La mayoria tienen su documentación en el github del creador.
-
 ...................................
 
 Para la instalación de Open Media Vault en la Raspberry, primero tenemos que instalar Raspberry pi OS lite.
@@ -13,7 +13,7 @@ lanzamos el siguiente comando:
 wget -O - https://github.com/OpenMediaVault-Plugin-Developers/installScript/raw/master/install | sudo bash
 ```
 
-# Docker Compose utilizados en el vídeo
+# Docker Compose utilizados
 
 ## Wireguard
 ```
@@ -81,5 +81,18 @@ services:
     networks:
       lan:
         ipv4_address: 192.168.1.3 
+```
 
+
+## Generamos una red de contenedores 
+```
+networks:
+  lan:
+    driver: macvlan
+    driver_opts:
+      parent: eth0
+    ipam:
+      config:
+        - subnet: "192.168.1.0/24"
+          gateway: "192.168.1.1"
 ```
